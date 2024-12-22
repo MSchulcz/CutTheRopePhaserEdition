@@ -135,7 +135,7 @@ class GameScene extends Phaser.Scene {
         // Отображение счета
         this.score = 0;
         this.bestScore = localStorage.getItem('bestScore') || 0; // Загружаем лучший счет
-        this.scoreText = this.add.text(16, 16, 'Score: 0', {
+        this.scoreText = this.add.text(16, 16, 'Счёт: 0', {
             fontSize: '32px',
             fill: '#000'
         });
@@ -206,7 +206,7 @@ class GameScene extends Phaser.Scene {
     collectBone(dog, bone) {
         bone.destroy();
         this.score += 10; // Увеличиваем счет
-        this.scoreText.setText('Score: ' + this.score);
+        this.scoreText.setText('Счёт: ' + this.score);
         this.sound.play('boneSound'); // Проигрываем звук сбора косточки
     }
 
@@ -230,7 +230,7 @@ class GameScene extends Phaser.Scene {
 // Функция для добавления кнопок интерфейса
 function createInterface(scene) {
     // Кнопка "Пауза"
-    const pauseButton = scene.add.text(600, 16, 'Pause', {
+    const pauseButton = scene.add.text(600, 16, 'Пауза', {
         fontSize: '24px',
         fill: '#fff',
         backgroundColor: '#ffc107',
@@ -243,7 +243,7 @@ function createInterface(scene) {
     });
 
     // Кнопка "Рестарт"
-    const restartButton = scene.add.text(600, 50, 'Restart', {
+    const restartButton = scene.add.text(600, 50, 'Заново', {
         fontSize: '24px',
         fill: '#fff',
         backgroundColor: '#dc3545',
@@ -252,7 +252,7 @@ function createInterface(scene) {
 
     restartButton.on('pointerdown', () => {
         scene.score = 0; // Сброс счета
-        scene.scoreText.setText('Score: 0');
+        scene.scoreText.setText('Счёт: 0');
         scene.resetDogPosition(); // Сбрасываем позицию собаки
         scene.bones.clear(true, true); // Удаляем все косточки
     });
